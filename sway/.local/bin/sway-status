@@ -1,0 +1,13 @@
+#!/bin/sh
+# swaybar status line: battery | WARP | clock
+
+# Battery
+bat=$(cat /sys/class/power_supply/BAT0/capacity 2>/dev/null)
+bstatus=$(cat /sys/class/power_supply/BAT0/status 2>/dev/null)
+[ "$bstatus" = Charging ] && chg="+" || chg=""
+
+# Cloudflare WARP
+warp=$(warp-cli status 2>/dev/null | sed -n '1s/.*: //p')
+
+printf 'BAT: %s%s%% │ WARP: %s │ %s\n' \
+    "$chg" "${bat:-?}" "${warp:-unknown}" "$(date +'%Y-%m-%d %X')"
