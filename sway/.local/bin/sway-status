@@ -1,5 +1,5 @@
 #!/bin/sh
-# swaybar status line: layout | battery | WARP | clock
+# swaybar status line: layout | volume | ram | battery | WARP | clock
 
 # Active keyboard layout
 lang=$(swaymsg -t get_inputs | jq -r 'first(.[] | select(.type == "keyboard" and .xkb_active_layout_name != null) | .xkb_active_layout_name)')
@@ -21,8 +21,11 @@ case "$vol_raw" in
     *) vol=$(echo "$vol_raw" | awk '{printf "%d%%", $2 * 100}') ;;
 esac
 
+# RAM usage (used / total, as a percentage)
+ram=$(awk '/^MemTotal:/{t=$2} /^MemAvailable:/{a=$2} END{if(t)printf "%d%%",(t-a)*100/t}' /proc/meminfo)
+
 # Cloudflare WARP
 warp=$(warp-cli status 2>/dev/null | sed -n '1s/.*: //p')
 
-printf '%s │ VOL: %s │ BAT: %s%s%% │ WARP: %s │ %s\n' \
-    "${lang:-??}" "${vol:-?}" "$chg" "${bat:-?}" "${warp:-unknown}" "$(date +'%Y-%m-%d %X')"
+printf '%s │ VOL: %s │ RAM: %s │ BAT: %s%s%% │ WARP: %s │ %s\n' \
+    "${lang:-??}" "${vol:-?}" "${ram:-?}" "$chg" "${bat:-?}" "${warp:-unknown}" "$(date +'%Y-%m-%d %X')"
