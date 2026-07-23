@@ -1,0 +1,20 @@
+#!/bin/sh
+# GNOME-like screenshot: auto-save to ~/Pictures/Screenshots + copy to clipboard
+# Usage: screenshot [full|area]
+
+dir="$HOME/Pictures/Screenshots"
+mkdir -p "$dir"
+file="$dir/Screenshot From $(date +'%Y-%m-%d %H-%M-%S').png"
+
+case "$1" in
+    area)
+        geom=$(slurp) || exit 0          # cancelled (Esc) -> do nothing
+        grim -g "$geom" "$file" || exit 1
+        ;;
+    *)
+        grim "$file" || exit 1
+        ;;
+esac
+
+wl-copy --type image/png < "$file"
+notify-send "Screenshot saved" "$(basename "$file")"

@@ -1,13 +1,28 @@
 #!/bin/sh
-# swaybar status line: battery | WARP | clock
+# swaybar status line: layout | battery | WARP | clock
+
+# Active keyboard layout
+lang=$(swaymsg -t get_inputs | jq -r 'first(.[] | select(.type == "keyboard" and .xkb_active_layout_name != null) | .xkb_active_layout_name)')
+case "$lang" in
+    English*) lang=EN ;;
+    German*)  lang=DE ;;
+    Russian*) lang=RU ;;
+esac
 
 # Battery
 bat=$(cat /sys/class/power_supply/BAT0/capacity 2>/dev/null)
 bstatus=$(cat /sys/class/power_supply/BAT0/status 2>/dev/null)
 [ "$bstatus" = Charging ] && chg="+" || chg=""
 
+# Volume (PipeWire via wpctl); show MUTE when muted
+vol_raw=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null)
+case "$vol_raw" in
+    *MUTED*) vol="MUTE" ;;
+    *) vol=$(echo "$vol_raw" | awk '{printf "%d%%", $2 * 100}') ;;
+esac
+
 # Cloudflare WARP
 warp=$(warp-cli status 2>/dev/null | sed -n '1s/.*: //p')
 
-printf 'BAT: %s%s%% │ WARP: %s │ %s\n' \
-    "$chg" "${bat:-?}" "${warp:-unknown}" "$(date +'%Y-%m-%d %X')"
+printf '%s │ VOL: %s │ BAT: %s%s%% │ WARP: %s │ %s\n' \
+    "${lang:-??}" "${vol:-?}" "$chg" "${bat:-?}" "${warp:-unknown}" "$(date +'%Y-%m-%d %X')"
