@@ -1,0 +1,70 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "height": 28,
+    "spacing": 6,
+
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": [],
+    "modules-right": ["custom/todo", "sway/language", "pulseaudio", "memory", "battery", "power-profiles-daemon", "custom/warp", "tray", "clock"],
+
+    "power-profiles-daemon": {
+        "format": "PROF {profile}",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}\n(click to cycle)"
+    },
+
+    "custom/todo": {
+        "return-type": "json",
+        "interval": 5,
+        "exec": "$HOME/.local/bin/todo-status",
+        "format": "{}",
+        "on-click": "ghostty --title=TodoEdit -e vi $HOME/.todo.txt"
+    },
+
+    "sway/workspaces": {
+        "all-outputs": true
+    },
+
+    "sway/language": {
+        "format": "{short}",
+        "tooltip-format": "{long}",
+        "on-click": "$HOME/.local/bin/lang-switch"
+    },
+
+    "pulseaudio": {
+        "format": "VOL {volume}%",
+        "format-muted": "MUTE",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+    },
+
+    "memory": {
+        "interval": 3,
+        "format": "RAM {percentage}%"
+    },
+
+    "battery": {
+        "states": { "warning": 20, "critical": 10 },
+        "format": "BAT {capacity}%",
+        "format-charging": "BAT +{capacity}%",
+        "format-plugged": "BAT {capacity}%"
+    },
+
+    "custom/warp": {
+        "interval": 5,
+        "exec": "warp-cli status 2>/dev/null | sed -n '1s/.*: //p'",
+        "format": "WARP {}"
+    },
+
+    "clock": {
+        "interval": 1,
+        "format": "{:%Y-%m-%d %H:%M:%S}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>"
+    },
+
+    "tray": {
+        "icon-size": 18,
+        "spacing": 8
+    }
+}

@@ -44,6 +44,9 @@ output eDP-1 scale 1.0
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
+# Lock the screen before suspend (closing the lid suspends -> shows login on wake)
+exec swayidle -w before-sleep 'swaylock -f -c 000000'
+
 ### Input configuration
 #
 # Example configuration:
@@ -96,6 +99,7 @@ default_floating_border none
     # Wi-Fi menu (nmtui in a floating terminal)
     bindsym $mod+n exec $term --class=nmtui -e nmtui
     for_window [app_id="nmtui"] floating enable, resize set 700 500
+    for_window [title="TodoEdit"] floating enable, resize set 800 600
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -249,20 +253,7 @@ exec nm-applet
 #
 # Status Bar:
 #
-# Read `man 5 sway-bar` for more information about this section.
-bar {
-    position bottom
-    font pango:monospace 14
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while $HOME/.local/bin/sway-status; do sleep 1; done
-
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
-}
+# Restarted on reload; config lives in ~/.config/waybar/
+exec_always pkill -x waybar; waybar
 
 include /etc/sway/config.d/*

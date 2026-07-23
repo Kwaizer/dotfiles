@@ -1,0 +1,17 @@
+#!/bin/sh
+# Waybar custom module: pending todos from ~/.todo.txt
+# One task per line. Blank lines, '# comments', and 'x done' lines are ignored.
+
+f="$HOME/.todo.txt"
+[ -f "$f" ] || : > "$f"
+
+pending=$(grep -vE '^[[:space:]]*($|#|x )' "$f")
+count=$(printf '%s' "$pending" | grep -c .)
+
+if [ "$count" -eq 0 ]; then
+    tooltip="no todos"
+else
+    tooltip=$(printf '%s\n' "$pending" | sed 's/^/• /')
+fi
+
+jq -cn --arg text "TODO $count" --arg tt "$tooltip" '{text:$text, tooltip:$tt}'
