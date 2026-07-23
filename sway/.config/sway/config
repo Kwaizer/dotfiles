@@ -68,7 +68,6 @@ input type:touchpad {
 
 input type:keyboard {
     xkb_layout "us,de,ru"
-    xkb_options "grp:alt_shift_toggle"
 }
 
 # Remove window titlebars (free space at the top of each window)
@@ -181,8 +180,11 @@ default_floating_border none
     # Toggle the current focus between tiling and floating mode
     bindsym $mod+Shift+space floating toggle
 
-    # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+    # Swap focus between the tiling area and the floating area (moved off $mod+space)
+    bindsym $mod+grave focus mode_toggle
+
+    # Switch keyboard layout (GNOME-style Super+Space), with a toast
+    bindsym $mod+space exec $HOME/.local/bin/lang-switch
 
     # Move focus to the parent container
     bindsym $mod+a focus parent

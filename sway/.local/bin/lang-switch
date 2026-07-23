@@ -1,0 +1,13 @@
+#!/bin/sh
+
+swaymsg input type:keyboard xkb_switch_layout next >/dev/null 2>&1
+
+lang=$(swaymsg -t get_inputs | jq -r 'first(.[] | select(.type == "keyboard" and .xkb_active_layout_name != null) | .xkb_active_layout_name)')
+case "$lang" in
+    English*) label="EN  —  English (US)" ;;
+    German*)  label="DE  —  German" ;;
+    Russian*) label="RU  —  Russian" ;;
+    *)        label="$lang" ;;
+esac
+
+notify-send -t 1000 -h string:x-canonical-private-synchronous:lang -h string:x-dunst-stack-tag:lang "$label"
