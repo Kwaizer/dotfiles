@@ -1,0 +1,10 @@
+1. brightnessctl     brightness keys     
+2. fuzzel            app launcher (dmenu replacement)                  
+3. wpctl             volume/mute keys                      
+4. grim              screenshots                           
+5. slurp             region select                         
+6. wl-copy           clipboard                             
+7. notify-send       toasts (lang/screenshot)              
+8. dunst / dunstify  notification daemon 
+9. nm-applet        tray Wi-Fi icon (autostart)           
+10. nmtui            Wi-Fi menu                  
