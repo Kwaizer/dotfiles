@@ -45,7 +45,7 @@ output eDP-1 scale 1.0
 # resumed. It will also lock your screen before your computer goes to sleep.
 
 # Lock the screen before suspend (closing the lid suspends -> shows login on wake)
-exec swayidle -w before-sleep 'swaylock -f -c 000000'
+exec swayidle -w before-sleep 'swaymsg input type:keyboard xkb_switch_layout 0; swaylock -f -c 000000'
 
 ### Input configuration
 #
