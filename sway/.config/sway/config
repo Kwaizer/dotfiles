@@ -254,6 +254,6 @@ exec nm-applet
 # Status Bar:
 #
 # Restarted on reload; config lives in ~/.config/waybar/
-exec_always pkill -x waybar; waybar
+exec_always "pkill -x waybar; waybar"
 
 include /etc/sway/config.d/*
