@@ -5,8 +5,8 @@
     "spacing": 6,
 
     "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-center": [],
-    "modules-right": ["custom/todo", "sway/language", "pulseaudio", "memory", "battery", "power-profiles-daemon", "custom/warp", "tray", "clock"],
+    "modules-center": ["clock"],
+    "modules-right": ["custom/todo", "sway/language", "pulseaudio", "memory", "battery", "power-profiles-daemon", "custom/warp", "tray"],
 
     "power-profiles-daemon": {
         "format": "PROF {profile}",
@@ -58,8 +58,8 @@
     },
 
     "clock": {
-        "interval": 1,
-        "format": "{:%Y-%m-%d %H:%M:%S}",
+        "interval": 60,
+        "format": "{:%d.%m %H:%M}",
         "tooltip-format": "<tt><small>{calendar}</small></tt>"
     },
 
