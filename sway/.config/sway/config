@@ -23,7 +23,8 @@ set $menu fuzzel
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 #output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 output * bg /usr/share/backgrounds/sway/1.jpg fill
-output eDP-1 scale 1.0
+output eDP-1 scale 1.25
+output eDP-1 scale_filter nearest
 #
 # Example configuration:
 #
