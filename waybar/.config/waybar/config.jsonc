@@ -9,7 +9,13 @@
     "modules-right": ["custom/todo", "sway/language", "pulseaudio", "memory", "battery", "power-profiles-daemon", "custom/warp", "tray"],
 
     "power-profiles-daemon": {
-        "format": "PROF {profile}",
+        "format": "{icon}",
+        "format-icons": {
+            "performance": "PERF",
+            "balanced": "BAL",
+            "power-saver": "SAVE",
+            "default": "PROF"
+        },
         "tooltip-format": "Power profile: {profile}\nDriver: {driver}\n(click to cycle)"
     },
 
@@ -53,13 +59,14 @@
 
     "custom/warp": {
         "interval": 5,
-        "exec": "warp-cli status 2>/dev/null | sed -n '1s/.*: //p'",
-        "format": "WARP {}"
+        "exec": "s=$(warp-cli status 2>/dev/null | sed -n '1s/.*: //p'); [ \"$s\" = Connected ] && echo WARP || echo \"WARP ${s:-?}\"",
+        "format": "{}"
     },
 
     "clock": {
         "interval": 60,
-        "format": "{:%d.%m %H:%M}",
+        "format": "{:%a %b %d  %H:%M}",
+        "locale": "C",
         "tooltip-format": "<tt><small>{calendar}</small></tt>"
     },
 
