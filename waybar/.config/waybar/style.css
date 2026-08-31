@@ -1,30 +1,28 @@
+/* Preset B - Departure Mono + NES palette + bevel borders */
+
+@define-color bg     #000000;
+@define-color box    #202020;
+@define-color hi     #bcbcbc;
+@define-color lo     #545454;
+@define-color fg     #fcfcfc;
+@define-color blue   #3cbcfc;
+@define-color red    #f83800;
+@define-color yellow #fcbc3c;
+
 * {
-    font-family: monospace;
-    font-size: 14px;
+    font-family: "Departure Mono", monospace;
+    font-size: 13px;
     min-height: 0;
-}
-
-window#waybar {
-    background: #000000;
-    color: #ffffff;
-}
-
-#workspaces button {
-    padding: 0 8px;
-    background: transparent;
-    color: #ffffff;
-    border: none;
     border-radius: 0;
 }
 
-#workspaces button.focused {
-    background: #285577;
+window#waybar {
+    background: @bg;
+    color: @fg;
+    border-bottom: 2px solid @lo;
 }
 
-#workspaces button.urgent {
-    background: #900000;
-}
-
+/* every module is a raised box */
 #language,
 #pulseaudio,
 #memory,
@@ -34,17 +32,59 @@ window#waybar {
 #power-profiles-daemon,
 #clock,
 #tray {
-    padding: 0 10px;
+    padding: 1px 8px;
+    margin: 3px 2px;
+    background: @box;
+    color: @fg;
+    border-top: 2px solid @hi;
+    border-left: 2px solid @hi;
+    border-bottom: 2px solid @lo;
+    border-right: 2px solid @lo;
+}
+
+#workspaces button {
+    padding: 1px 8px;
+    margin: 3px 2px;
+    background: @box;
+    color: @lo;
+    border-top: 2px solid @hi;
+    border-left: 2px solid @hi;
+    border-bottom: 2px solid @lo;
+    border-right: 2px solid @lo;
+}
+
+/* focused workspace is pressed in: bevel flipped */
+#workspaces button.focused {
+    background: @blue;
+    color: @bg;
+    border-top: 2px solid @lo;
+    border-left: 2px solid @lo;
+    border-bottom: 2px solid @hi;
+    border-right: 2px solid @hi;
+}
+
+#workspaces button.urgent {
+    background: @red;
+    color: @fg;
+}
+
+#mode {
+    padding: 1px 8px;
+    margin: 3px 2px;
+    background: @red;
+    color: @fg;
 }
 
 #battery.warning {
-    color: #ffcc00;
+    background: @yellow;
+    color: @bg;
 }
 
 #battery.critical {
-    color: #ff5555;
+    background: @red;
+    color: @fg;
 }
 
 #pulseaudio.muted {
-    color: #888888;
+    color: @lo;
 }
