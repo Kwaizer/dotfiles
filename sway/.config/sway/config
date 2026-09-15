@@ -97,6 +97,9 @@ default_floating_border none
     # Launch Telegram
     bindsym $mod+t exec flatpak run org.telegram.desktop
 
+    # Notification history picker (dunst + fuzzel)
+    bindsym $mod+Shift+n exec $HOME/.local/bin/notif-history
+
     # Wi-Fi menu (nmtui in a floating terminal)
     bindsym $mod+n exec $term --class=nmtui -e nmtui
     for_window [app_id="nmtui"] floating enable, resize set 700 500
