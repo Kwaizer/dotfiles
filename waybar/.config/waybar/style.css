@@ -33,7 +33,7 @@ window#waybar {
 #clock,
 #tray {
     padding: 1px 8px;
-    margin: 3px 2px;
+    margin: 3px 2px 6px 2px;
     background: @box;
     color: @fg;
     border-top: 2px solid @hi;
@@ -44,7 +44,7 @@ window#waybar {
 
 #workspaces button {
     padding: 1px 8px;
-    margin: 3px 2px;
+    margin: 3px 2px 6px 2px;
     background: @box;
     color: @lo;
     border-top: 2px solid @hi;

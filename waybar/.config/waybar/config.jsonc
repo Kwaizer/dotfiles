@@ -2,11 +2,11 @@
     "layer": "top",
     "position": "top",
     "height": 30,
-    "spacing": 6,
+    "spacing": 0,
 
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["clock"],
-    "modules-right": ["custom/todo", "sway/language", "pulseaudio", "memory", "battery", "power-profiles-daemon", "custom/warp", "tray"],
+    "modules-right": ["custom/todo", "sway/language", "pulseaudio", "memory", "custom/warp", "tray", "power-profiles-daemon", "battery"],
 
     "power-profiles-daemon": {
         "format": "{icon}",
