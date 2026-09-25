@@ -12,8 +12,8 @@
       "state": "ignored",
       "app-name": "NetworkManager Applet"
     },
-    "lang-switch-transient": {
-      "state": "transient",
+    "lang-switch-ignore": {
+      "state": "ignored",
       "app-name": "lang-switch"
     }
   }
