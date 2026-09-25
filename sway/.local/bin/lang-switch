@@ -10,4 +10,4 @@ case "$lang" in
     *)        label="$lang" ;;
 esac
 
-notify-send -t 1000 -h string:x-canonical-private-synchronous:lang -h string:x-dunst-stack-tag:lang "$label"
+notify-send -a lang-switch -t 1000 -h string:x-canonical-private-synchronous:lang -h string:x-dunst-stack-tag:lang "$label"

@@ -21,12 +21,22 @@
 
     "custom/notif": {
         "return-type": "json",
-        "interval": 5,
-        "exec": "$HOME/.local/bin/notif-history status",
-        "format": "{}",
-        "on-click": "$HOME/.local/bin/notif-history",
-        "on-click-middle": "$HOME/.local/bin/notif-history clear",
-        "on-click-right": "dunstctl set-paused toggle"
+        "exec": "swaync-client -swb",
+        "format": "{icon} {}",
+        "format-icons": {
+            "notification": "NOTI",
+            "none": "NOTI",
+            "dnd-notification": "DND",
+            "dnd-none": "DND",
+            "inhibited-notification": "NOTI",
+            "inhibited-none": "NOTI",
+            "dnd-inhibited-notification": "DND",
+            "dnd-inhibited-none": "DND"
+        },
+        "tooltip": false,
+        "on-click": "swaync-client -t -sw",
+        "on-click-middle": "swaync-client -C -sw",
+        "on-click-right": "swaync-client -d -sw"
     },
 
     "custom/todo": {

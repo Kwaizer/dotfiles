@@ -97,8 +97,8 @@ default_floating_border none
     # Launch Telegram
     bindsym $mod+t exec flatpak run org.telegram.desktop
 
-    # Notification history picker (dunst + fuzzel)
-    bindsym $mod+Shift+n exec $HOME/.local/bin/notif-history
+    # Toggle notification center (swaync)
+    bindsym $mod+Shift+n exec swaync-client -t -sw
 
     # Wi-Fi menu (nmtui in a floating terminal)
     bindsym $mod+n exec $term --class=nmtui -e nmtui
@@ -252,6 +252,7 @@ bindsym $mod+r mode "resize"
 #
 # Autostart:
 #
+exec swaync
 exec nm-applet
 
 #

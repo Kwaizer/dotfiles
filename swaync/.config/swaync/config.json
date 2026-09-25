@@ -1,0 +1,20 @@
+{
+  "$schema": "/etc/xdg/swaync/configSchema.json",
+  "positionX": "right",
+  "positionY": "top",
+  "control-center-positionX": "right",
+  "control-center-positionY": "top",
+  "timeout": 10,
+  "timeout-low": 5,
+  "timeout-critical": 0,
+  "notification-visibility": {
+    "nm-applet-ignore": {
+      "state": "ignored",
+      "app-name": "NetworkManager Applet"
+    },
+    "lang-switch-transient": {
+      "state": "transient",
+      "app-name": "lang-switch"
+    }
+  }
+}

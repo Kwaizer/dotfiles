@@ -5,6 +5,6 @@
 5. slurp             region select                         
 6. wl-copy           clipboard                             
 7. notify-send       toasts (lang/screenshot)              
-8. dunst / dunstify  notification daemon 
+8. swaync           notification daemon + center 
 9. nm-applet        tray Wi-Fi icon (autostart)           
 10. nmtui            Wi-Fi menu                  
