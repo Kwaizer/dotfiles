@@ -3,3 +3,5 @@ font-feature = -calt
 font-feature = -dlig
 
 desktop-notifications = false
+
+bell-features = no-system,no-audio,no-attention,no-title,no-border
